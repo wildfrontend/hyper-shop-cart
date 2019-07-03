@@ -1,9 +1,8 @@
-import { h, app } from "hyperapp";
+import { h, app } from 'hyperapp'
 
-import App from "./App";
+import App from './App'
 
-const state = {};
+import { state } from './store/state'
+import { actions } from './store/actions'
 
-const actions = {};
-
-app(state, actions, () => <App />, document.body);
+app(state, actions, () => <App />, document.body)
