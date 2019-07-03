@@ -1,0 +1,46 @@
+{
+  "name": "shop-cart",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@hyperapp/router": "^0.7.2",
+    "bulma": "^0.7.5",
+    "bulma-badge": "^3.0.1",
+    "bulma-slider": "^2.0.0",
+    "bulma-switch": "^2.0.0",
+    "hyperapp": "^1.2.10",
+    "node-sass": "^4.12.0"
+  },
+  "devDependencies": {
+    "hyperapp-scripts": "^0.3.0"
+  },
+  "scripts": {
+    "start": "hyperapp-scripts start",
+    "build": "hyperapp-scripts build",
+    "test": "hyperapp-scripts test"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "rules": {
+      "react/react-in-jsx-scope": "off",
+      "no-unused-vars": [
+        "warn",
+        {
+          "varsIgnorePattern": "^h$"
+        }
+      ]
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
