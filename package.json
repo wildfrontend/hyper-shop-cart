@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@hyperapp/router": "^0.7.2",
+    "axios": "^0.19.0",
     "bulma": "^0.7.5",
     "bulma-badge": "^3.0.1",
     "bulma-slider": "^2.0.0",
@@ -19,7 +20,7 @@
     "start": "hyperapp-scripts start",
     "build": "hyperapp-scripts build",
     "test": "hyperapp-scripts test",
-    "server":"json-server --watch ./src/data/db.json --port 8000"
+    "server": "json-server --watch ./src/data/db.json --port 8000"
   },
   "eslintConfig": {
     "extends": "react-app",

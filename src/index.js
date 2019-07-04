@@ -1,14 +1,25 @@
 import { h, app } from 'hyperapp'
 import { location } from '@hyperapp/router'
-import { data } from './data/movies'
+
 import App from './App'
+
+import Axios from 'axios'
 
 const state = {
     location: location.state,
-    movies: data
+    movies: [],
+    cart: []
 }
 const actions = {
-    location: location.actions
+    location: location.actions,
+    movies: {
+        fetchMoviesDone: res => res.data,
+        fetchMoviesApi: url => (state, actions) => {
+            Axios.get(url)
+                .then(actions.fetchMoviesDone)
+                .catch(err => console.log(err))
+        }
+    }
 }
 
 const view = () => {

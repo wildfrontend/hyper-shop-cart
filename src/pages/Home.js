@@ -4,11 +4,12 @@ import _ from 'lodash'
 import * as Product from '../components/Product'
 import { Filter } from '../components/Filter'
 
-export const Home = () => (state, acitons) => {
+export const Home = () => (state, actions) => {
     let { movies } = state
+    console.log(state)
 
     return (
-        <div>
+        <div oncreate={() => actions.movies.fetchMoviesApi('http://localhost:8000/movies')}>
             <section class='hero is-medium is-dark is-bold'>
                 <div class='hero-body'>
                     <div class='container'>
