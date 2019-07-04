@@ -1,24 +1,19 @@
 import { h } from 'hyperapp'
-import { Route, Switch } from '@hyperapp/router'
 
-import { Home } from './pages/Home'
-import { NoMatch } from './pages/NoMatch'
-import { About } from './pages/About'
-import { Navbar } from './components/Navbar'
+import { NavBar } from './components/NavBar'
 
 import './styles/app.scss'
+import { Routes } from './routes'
 
 const App = () => (
-  <div>
-    <header>
-      <Navbar />
-    </header>
-    <Switch>
-      <Route path='/' render={Home} />
-      <Route path='/about' render={About} />
-      <Route parent render={NoMatch} />
-    </Switch>
-  </div>
+    <div>
+        <header>
+            <NavBar />
+        </header>
+        <main>
+            <Routes />
+        </main>
+    </div>
 )
 
 export default App

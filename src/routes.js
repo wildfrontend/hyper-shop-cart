@@ -6,11 +6,9 @@ import { About } from './pages/About'
 import { NoMatch } from './pages/NoMatch'
 
 export const Routes = () => (
-  <div>
     <Switch>
       <Route path='/' render={Home} />
       <Route path='/about' render={About} />
       <Route render={NoMatch} />
     </Switch>
-  </div>
 )
