@@ -1,8 +1,18 @@
 import { h, app } from 'hyperapp'
-
+import { location } from '@hyperapp/router'
 import App from './App'
 
-import { state } from './store/state'
-import { actions } from './store/actions'
+const state = {
+    location: location.state
+}
+const actions = {
+    location: location.actions
+}
 
-app(state, actions, () => <App />, document.body)
+const view = () => {
+    return <App />
+}
+
+const main = app(state, actions, view, document.body)
+
+location.subscribe(main.location)
