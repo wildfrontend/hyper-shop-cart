@@ -1,9 +1,11 @@
 import { h, app } from 'hyperapp'
 import { location } from '@hyperapp/router'
+import { data } from './data/movies'
 import App from './App'
 
 const state = {
-    location: location.state
+    location: location.state,
+    movies: data
 }
 const actions = {
     location: location.actions

@@ -1,24 +1,24 @@
 import { h } from 'hyperapp'
+import { Link } from '@hyperapp/router'
 
-export const Card = () => {
+export const Card = ({ movie }) => {
+    let { id, overview, planet_shipping, poster_path, price, release_date, title, vote_average } = movie
     return (
-        <div class='card'>
+        <div id={id} class='card'>
             <div class='card-image'>
+                <span class='badge is-badge-warning is-badge-large' data-badge={vote_average} />
                 <figure class='image is-4by3'>
-                    <img src='https://bulma.io/images/placeholders/1280x960.png' alt='Placeholder image' />
+                    <Link to={`/product/${id}`}>
+                        <img src={`http://${poster_path}`} alt={title} />
+                    </Link>
                 </figure>
             </div>
             <div class='card-content'>
-                <p class='title'>
-                   商品標題
-                </p>
-                <p class='subtitle'>分類或是評分</p>
+                <b>{title}</b>
             </div>
             <footer class='card-footer'>
                 <p class='card-footer-item'>
-                    <span>
-                        購買
-                    </span>
+                    <span>購買</span>
                 </p>
             </footer>
         </div>

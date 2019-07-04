@@ -4,7 +4,9 @@ import _ from 'lodash'
 import * as Product from '../components/Product'
 import { Filter } from '../components/Filter'
 
-export const Home = () => {
+export const Home = () => (state, acitons) => {
+    let { movies } = state
+
     return (
         <div>
             <section class='hero is-medium is-dark is-bold'>
@@ -22,10 +24,10 @@ export const Home = () => {
                     </div>
                     <div class='column is-9'>
                         <div class='columns is-multiline'>
-                            {_.times(9, () => {
+                            {_.map(movies, movie => {
                                 return (
                                     <div class='column is-4'>
-                                        <Product.Card />
+                                        <Product.Card movie={movie} />
                                     </div>
                                 )
                             })}
