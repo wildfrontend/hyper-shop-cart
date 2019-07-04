@@ -6,7 +6,7 @@ export const NavBar = () => {
         <nav class='navbar' role='navigation' aria-label='main-navigation'>
             <div class='navbar-brand'>
                 <a class='navbar-item' href='https://bulma.io'>
-                    <img src='https://bulma.io/images/bulma-logo.png' />
+                    <img alt='logo' src='https://bulma.io/images/bulma-logo.png' />
                 </a>
             </div>
             <div id='navbarBasicExample' class='navbar-menu'>

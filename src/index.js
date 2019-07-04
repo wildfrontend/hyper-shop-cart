@@ -9,7 +9,7 @@ const actions = {
     location: location.actions
 }
 
-const view = state => {
+const view = () => {
     return <App />
 }
 
