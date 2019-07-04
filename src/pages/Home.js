@@ -1,5 +1,6 @@
 import { h } from 'hyperapp'
-
+import _ from 'lodash'
+import * as Product from '../components/Product'
 export const Home = () => {
     return (
         <div>
@@ -11,6 +12,22 @@ export const Home = () => {
                     </div>
                 </div>
             </section>
+            <div class='container' style={{ marginTop: '4rem' }}>
+                <div class='columns'>
+                    <div class='column is-3'>asdfdsf</div>
+                    <div class='column is-9'>
+                        <div class='columns is-multiline'>
+                            {_.times(9, () => {
+                                return (
+                                    <div class='column is-4'>
+                                        <Product.Card />
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
