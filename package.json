@@ -18,7 +18,8 @@
   "scripts": {
     "start": "hyperapp-scripts start",
     "build": "hyperapp-scripts build",
-    "test": "hyperapp-scripts test"
+    "test": "hyperapp-scripts test",
+    "server":"json-server --watch ./src/data/db.json --port 8000"
   },
   "eslintConfig": {
     "extends": "react-app",
