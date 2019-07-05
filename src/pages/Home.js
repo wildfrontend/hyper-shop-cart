@@ -3,17 +3,32 @@ import { h } from 'hyperapp'
 import _ from 'lodash'
 import * as Product from '../components/Product'
 import { Filter } from '../components/Filter'
+import Axios from 'axios'
 
 export const state = {
     movies: []
 }
+
 export const actions = {
     setMovies: value => state => ({ movies: value }),
-    fetchMoviesApi
+    fetchMoviesApi: () => (state, actions) => {
+        console.log(state, actions)
+        Axios.get('http://localhost:8000/movies')
+            .then(res => {
+                console.log(res)
+                actions.setMovies(res.data)
+            })
+            .catch(err => console.log(err))
+    }
 }
-export const Home = () => (state, actions) => {
+
+export const Home = ({ state, actions }) => props => {
+    console.log(state, actions, props)
+
     let { movies } = state
-    console.log(state)
+    let { fetchMoviesApi } = actions
+    
+    if (_.isEmpty(movies)) fetchMoviesApi()
 
     return (
         <div>

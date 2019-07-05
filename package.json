@@ -10,7 +10,6 @@
     "bulma-slider": "^2.0.0",
     "bulma-switch": "^2.0.0",
     "hyperapp": "^1.2.10",
-    "hyperapp-fetch": "^1.0.1",
     "lodash": "^4.17.11",
     "node-sass": "^4.12.0",
     "ramda": "^0.26.1"

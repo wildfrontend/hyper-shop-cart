@@ -5,15 +5,14 @@ import { NavBar } from './components/NavBar'
 import './styles/app.scss'
 import { Routes } from './routes'
 
-const App = ({ state, action }) => {
-    console.log(state, action)
+const App = ({ state, actions }) => {
     return (
         <div>
             <header>
                 <NavBar />
             </header>
             <main>
-                <Routes />
+                <Routes state={state} actions={actions} />
             </main>
         </div>
     )
