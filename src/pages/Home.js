@@ -3,13 +3,35 @@ import { h } from 'hyperapp'
 import _ from 'lodash'
 import * as Product from '../components/Product'
 import { Filter } from '../components/Filter'
+import Axios from 'axios'
 
-export const Home = () => (state, actions) => {
+export const state = {
+    movies: []
+}
+
+export const actions = {
+    setMovies: value => state => ({ movies: value }),
+    fetchMoviesApi: () => (state, actions) => {
+        console.log(state, actions)
+        Axios.get('http://localhost:8000/movies')
+            .then(res => {
+                console.log(res)
+                actions.setMovies(res.data)
+            })
+            .catch(err => console.log(err))
+    }
+}
+
+export const Home = ({ state, actions }) => props => {
+    console.log(state, actions, props)
+
     let { movies } = state
-    console.log(state)
+    let { fetchMoviesApi } = actions
+
+    if (_.isEmpty(movies)) fetchMoviesApi()
 
     return (
-        <div oncreate={() => actions.movies.fetchMoviesApi('http://localhost:8000/movies')}>
+        <div>
             <section class='hero is-medium is-dark is-bold'>
                 <div class='hero-body'>
                     <div class='container'>
@@ -19,21 +41,14 @@ export const Home = () => (state, actions) => {
                 </div>
             </section>
             <div class='container' style={{ marginTop: '4rem' }}>
-                <div class='columns'>
-                    <div class='column is-3'>
-                        <Filter />
-                    </div>
-                    <div class='column is-9'>
-                        <div class='columns is-multiline'>
-                            {_.map(movies, movie => {
-                                return (
-                                    <div class='column is-4'>
-                                        <Product.Card movie={movie} />
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
+                <div class='columns is-multiline'>
+                    {_.map(movies, movie => {
+                        return (
+                            <div class='column is-3'>
+                                <Product.Card movie={movie} />
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </div>

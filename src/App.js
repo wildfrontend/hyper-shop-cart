@@ -5,15 +5,16 @@ import { NavBar } from './components/NavBar'
 import './styles/app.scss'
 import { Routes } from './routes'
 
-const App = () => (
-    <div>
-        <header>
-            <NavBar />
-        </header>
-        <main>
-            <Routes />
-        </main>
-    </div>
-)
-
+const App = ({ state, actions }) => {
+    return (
+        <div>
+            <header>
+                <NavBar />
+            </header>
+            <main>
+                <Routes state={state} actions={actions} />
+            </main>
+        </div>
+    )
+}
 export default App

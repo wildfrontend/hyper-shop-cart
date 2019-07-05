@@ -3,27 +3,25 @@ import { location } from '@hyperapp/router'
 
 import App from './App'
 
-import Axios from 'axios'
+import * as Home from './pages/Home'
+import * as Cart from './components/Cart'
+import * as Product from './pages/Product'
 
 const state = {
     location: location.state,
-    movies: [],
-    cart: []
+    home: Home.state,
+    product: Product.state,
+    cart: Cart.state
 }
 const actions = {
     location: location.actions,
-    movies: {
-        fetchMoviesDone: res => res.data,
-        fetchMoviesApi: url => (state, actions) => {
-            Axios.get(url)
-                .then(actions.fetchMoviesDone)
-                .catch(err => console.log(err))
-        }
-    }
+    home: Home.actions,
+    product: Product.actions,
+    cart: Cart.actions
 }
 
-const view = () => {
-    return <App />
+const view = (state, actions) => {
+    return <App state={state} actions={actions} />
 }
 
 const main = app(state, actions, view, document.body)
