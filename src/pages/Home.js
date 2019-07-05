@@ -1,9 +1,9 @@
 import { h } from 'hyperapp'
 
 import _ from 'lodash'
-import * as Product from '../components/Product'
-import { Filter } from '../components/Filter'
 import Axios from 'axios'
+
+import * as Product from '../components/Product'
 
 export const state = {
     movies: []
