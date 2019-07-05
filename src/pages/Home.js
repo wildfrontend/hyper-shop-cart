@@ -4,12 +4,19 @@ import _ from 'lodash'
 import * as Product from '../components/Product'
 import { Filter } from '../components/Filter'
 
+export const state = {
+    movies: []
+}
+export const actions = {
+    setMovies: value => state => ({ movies: value }),
+    fetchMoviesApi
+}
 export const Home = () => (state, actions) => {
     let { movies } = state
     console.log(state)
 
     return (
-        <div oncreate={() => actions.movies.fetchMoviesApi('http://localhost:8000/movies')}>
+        <div>
             <section class='hero is-medium is-dark is-bold'>
                 <div class='hero-body'>
                     <div class='container'>
