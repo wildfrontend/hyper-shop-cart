@@ -9,7 +9,7 @@ const App = ({ state, actions }) => {
     return (
         <div>
             <header>
-                <NavBar />
+                <NavBar state={state} actions={actions} />
             </header>
             <main>
                 <Routes state={state} actions={actions} />

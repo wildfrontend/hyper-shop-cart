@@ -25,8 +25,8 @@ export const actions = {
 export const Home = ({ state, actions }) => props => {
     console.log(state, actions, props)
 
-    let { movies } = state
-    let { fetchMoviesApi } = actions
+    let { movies } = state.home
+    let { fetchMoviesApi } = actions.home
 
     if (_.isEmpty(movies)) fetchMoviesApi()
 
@@ -45,7 +45,11 @@ export const Home = ({ state, actions }) => props => {
                     {_.map(movies, movie => {
                         return (
                             <div class='column is-3'>
-                                <Product.Card movie={movie} />
+                                <Product.Card
+                                    movie={movie}
+                                    actionsCart={actions.cart}
+                                    stateCart={state.cart}
+                                />
                             </div>
                         )
                     })}
