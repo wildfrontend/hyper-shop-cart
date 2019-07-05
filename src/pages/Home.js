@@ -27,7 +27,7 @@ export const Home = ({ state, actions }) => props => {
 
     let { movies } = state
     let { fetchMoviesApi } = actions
-    
+
     if (_.isEmpty(movies)) fetchMoviesApi()
 
     return (
@@ -41,21 +41,14 @@ export const Home = ({ state, actions }) => props => {
                 </div>
             </section>
             <div class='container' style={{ marginTop: '4rem' }}>
-                <div class='columns'>
-                    <div class='column is-3'>
-                        <Filter />
-                    </div>
-                    <div class='column is-9'>
-                        <div class='columns is-multiline'>
-                            {_.map(movies, movie => {
-                                return (
-                                    <div class='column is-4'>
-                                        <Product.Card movie={movie} />
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
+                <div class='columns is-multiline'>
+                    {_.map(movies, movie => {
+                        return (
+                            <div class='column is-3'>
+                                <Product.Card movie={movie} />
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </div>
