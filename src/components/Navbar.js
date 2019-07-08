@@ -19,20 +19,9 @@ export const NavBar = ({ state, actions }) => {
                         Home
                     </Link>
 
-                    <Link class='navbar-item' to='/about'>
-                        About
+                    <Link class='navbar-item' to='/cart'>
+                        Cart
                     </Link>
-                </div>
-            </div>
-            <div class='navbar-end'>
-                <div class='navbar-item'>
-                    <div class='modal'>
-                        <div class='modal-background' />
-                        <div class='modal-content'>
-                            <pre>{JSON.stringify(cart, null, 2)}</pre>
-                        </div>
-                        <button class='button'>購物車</button>
-                    </div>
                 </div>
             </div>
         </nav>

@@ -24,7 +24,6 @@ export const actions = {
                     item.number += 1
                 }
             })
-
             return {
                 cart: [...state.cart]
             }
@@ -34,4 +33,14 @@ export const actions = {
             }
         }
     }
+}
+
+export const Cart = ({ state, actions }) => props => {
+    let { cart } = state
+    return (
+        <div>
+            <h1>Cart</h1>
+            <pre>{JSON.stringify(cart, null, 2)}</pre>
+        </div>
+    )
 }
