@@ -4,7 +4,7 @@ import { location } from '@hyperapp/router'
 import App from './App'
 
 import * as Home from './pages/Home'
-import * as Cart from './components/Cart'
+import * as Cart from './pages/Cart'
 import * as Product from './pages/Product'
 
 const state = {
@@ -25,5 +25,4 @@ const view = (state, actions) => {
 }
 
 const main = app(state, actions, view, document.body)
-
 location.subscribe(main.location)

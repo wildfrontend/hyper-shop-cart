@@ -1,9 +1,9 @@
 import { h } from 'hyperapp'
 
 import _ from 'lodash'
-import * as Product from '../components/Product'
-import { Filter } from '../components/Filter'
 import Axios from 'axios'
+
+import * as Product from '../components/Product'
 
 export const state = {
     movies: []
@@ -15,7 +15,7 @@ export const actions = {
         console.log(state, actions)
         Axios.get('http://localhost:8000/movies')
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 actions.setMovies(res.data)
             })
             .catch(err => console.log(err))
@@ -25,8 +25,8 @@ export const actions = {
 export const Home = ({ state, actions }) => props => {
     console.log(state, actions, props)
 
-    let { movies } = state
-    let { fetchMoviesApi } = actions
+    let { movies } = state.home
+    let { fetchMoviesApi } = actions.home
 
     if (_.isEmpty(movies)) fetchMoviesApi()
 
@@ -45,7 +45,11 @@ export const Home = ({ state, actions }) => props => {
                     {_.map(movies, movie => {
                         return (
                             <div class='column is-3'>
-                                <Product.Card movie={movie} />
+                                <Product.Card
+                                    movie={movie}
+                                    actionsCart={actions.cart}
+                                    stateCart={state.cart}
+                                />
                             </div>
                         )
                     })}

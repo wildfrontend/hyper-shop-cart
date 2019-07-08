@@ -1,12 +1,16 @@
 import { h } from 'hyperapp'
 import { Link } from '@hyperapp/router'
 
-export const NavBar = () => {
+export const NavBar = ({ state, actions }) => {
+    let { cart } = state
     return (
         <nav class='navbar' role='navigation' aria-label='main-navigation'>
             <div class='navbar-brand'>
                 <a class='navbar-item' href='https://bulma.io'>
-                    <img alt='logo' src='https://bulma.io/images/bulma-logo.png' />
+                    <img
+                        alt='logo'
+                        src='https://bulma.io/images/bulma-logo.png'
+                    />
                 </a>
             </div>
             <div id='navbarBasicExample' class='navbar-menu'>
@@ -15,8 +19,8 @@ export const NavBar = () => {
                         Home
                     </Link>
 
-                    <Link class='navbar-item' to='/about'>
-                        Documentation
+                    <Link class='navbar-item' to='/cart'>
+                        Cart
                     </Link>
                 </div>
             </div>
