@@ -32,15 +32,82 @@ export const actions = {
                 cart: [...state.cart, { ...value, number: 1, in_cart: true }]
             }
         }
+    },
+    updateCart: value => state => {
+        switch (value.command) {
+            case 'increment':
+                state.cart.map(item => {
+                    if (item.id === value.id) {
+                        item.number += 1
+                    }
+                })
+                return {
+                    cart: [...state.cart]
+                }
+            case 'decrement':
+                state.cart.map(item => {
+                    if (item.id === value.id && item.number > 1) {
+                        item.number -= 1
+                    }
+                })
+                return {
+                    cart: [...state.cart]
+                }
+            default:
+                return {
+                    cart: [...state.cart]
+                }
+        }
+    },
+    removeCart: id => state => {
+        return {
+            cart: state.cart.filter(item => {
+                return item.id !== id
+            })
+        }
     }
 }
 
 export const Cart = ({ state, actions }) => props => {
     let { cart } = state
+    let { removeCart, updateCart } = actions
     return (
-        <div>
+        <div class='container'>
             <h1>Cart</h1>
-            <pre>{JSON.stringify(cart, null, 2)}</pre>
+            {cart.map(item => {
+                let { title, in_cart, number, poster_path, price, id } = item
+                return (
+                    <article class='message'>
+                        <div class='message-header'>
+                            <p>{title}</p>
+                            <button
+                                class='delete'
+                                aria-label='delete'
+                                onclick={() => removeCart(id)}
+                            />
+                        </div>
+                        <div class='message-body'>
+                            <input class='input' readOnly value={number} />
+                            <button
+                                class='button'
+                                onclick={() =>
+                                    updateCart({ id, command: 'decrement' })
+                                }
+                            >
+                                -
+                            </button>
+                            <button
+                                class='button'
+                                onclick={() =>
+                                    updateCart({ id, command: 'increment' })
+                                }
+                            >
+                                +
+                            </button>
+                        </div>
+                    </article>
+                )
+            })}
         </div>
     )
 }
